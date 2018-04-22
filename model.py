@@ -153,9 +153,6 @@ model.add(Dense(1))
 #model.add(Dense(1))
 
 adam = Adam(lr=1e-4, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
-# opt = keras.optimizers.rmsprop(lr=0.0001, decay=1e-6)
-# opt = keras.optimizers.Adam(lr=learning_rate)
-# opt = keras.optimizers.RMSprop(lr=learning_rate, rho=0.9, epsilon=None, decay=0.0)
 model.compile(loss='mse',optimizer=adam)
 
 history_object = model.fit_generator(train_generator,
@@ -167,15 +164,6 @@ history_object = model.fit_generator(train_generator,
 
 # print the keys contained in the history object
 print(history_object.history.keys())
-
-# plot the training and validation loss for each epoch
-#plt.plot(history_object.history['loss'])
-#plt.plot(history_object.history['val_loss'])
-#plt.title('model mean squared error loss')
-#plt.ylabel('mean squared error loss')
-#plt.xlabel('epoch')
-#plt.legend(['training set', 'validation set'], loc='upper right')
-#plt.show()
 
 model.save('model.h5')
 
