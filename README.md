@@ -1,7 +1,7 @@
 # **Behavioral Cloning** 
 
 Result Demo
-[![Watch the video](./examples/crop.png)](https://youtu.be/lcO3vkUIxJo)
+[![Watch the demo video]](https://youtu.be/lcO3vkUIxJo)
 ---
 
 **Behavioral Cloning Project**
