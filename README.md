@@ -78,17 +78,19 @@ For details about how I created the training data, see the next section.
 
 #### 1. Solution Design Approach
 
-The overall strategy for deriving a model architecture was to ...
+The overall strategy for deriving a model architecture was reduce computation first....
+Because I have no GPU and applied AWS service fail.
+If I use 160 * 360 * 3 image size with CPU, I will need to spend 2.5 hours per epoch.
 
-My first step was to use a convolution neural network model similar to the ... I thought this model might be appropriate because ...
+My first step was resizing input image to 64 * 64 * 3, and it work, just spend 40 mins per epoch. 
+
+And I use a convolution neural network model similar to the lenet but more layer in my CNN without pooling layer, I thought this model might be appropriate because more layer maybe had good result. 
 
 In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
 
-To combat the overfitting, I modified the model so that ...
+To combat the overfitting, I make my model smaller, and use samller scale on fully connection layer. Besides, I add dropout on fully connection layer too. 
 
-Then I ... 
-
-The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track... to improve the driving behavior in these cases, I ....
+The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track when turn right, because left turn case is more more then right turn case. To improve the driving behavior I do data aguement,  I will introduce in section 3.
 
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
