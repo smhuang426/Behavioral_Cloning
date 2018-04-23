@@ -1,9 +1,5 @@
 # **Behavioral Cloning** 
 
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
 ---
 
 **Behavioral Cloning Project**
@@ -21,9 +17,6 @@ The goals / steps of this project are the following:
 [image1]: ./examples/crop.png "Crop"
 [image2]: ./examples/flip.png "Flip"
 [image3]: ./examples/resize.png "Resize"
-
-## Rubric Points
-### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
 
 ---
 ### Files Submitted & Code Quality
@@ -132,3 +125,5 @@ After the augment the data set, I had around 9000 of data points. I only flip th
 I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 1. I used an adam optimizer so that manually training the learning rate wasn't necessary.
+
+[![Watch the video](./examples/crop.png)](./output_video.mp4)
