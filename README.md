@@ -18,13 +18,9 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/placeholder.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image1]: ./examples/crop.png "Crop"
+[image2]: ./examples/flip.png "Flip"
+[image3]: ./examples/resize.png "Resize"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -54,9 +50,9 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of a convolution neural network with 2*2~8*8 filter sizes and depths between 8 and 128 (model.py lines 121-153) 
+My model consists of a convolution neural network with 2 * 2 ~ 8 * 8 filter sizes and depths between 8 and 128 (model.py lines 121-153) 
 
-The model includes RELU layers to introduce nonlinearity (code line 123), and the data is normalized before the model using Opencv to crop it for removing sky and resize input to 64*64*3 (code line 67). 
+The model includes RELU layers to introduce nonlinearity (code line 123), and the data is normalized before the model using Opencv to crop it for removing sky and resize input to 64 * 64 * 3 (code line 67). 
 
 #### 2. Attempts to reduce overfitting in the model
 
@@ -116,28 +112,23 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 #### 3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
+I use the images provided by course.
+
+I then crop the image to remove sky part
+
+![alt text][image1]
+
+
+Then I resize training set to 64 * 64 * 3 so that I can use small scale CNN to achieve low computation and good result.
+![alt text][image3]
+
+But I found that, there is less right turn data.
+To augment the data set, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
 
 ![alt text][image2]
 
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
+After the augment the data set, I had around 9000 of data points. I only flip those images if steering number is bigger than 0.05.
 
-![alt text][image3]
-![alt text][image4]
-![alt text][image5]
+I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
-Then I repeated this process on track two in order to get more data points.
-
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
-
-![alt text][image6]
-![alt text][image7]
-
-Etc ....
-
-After the collection process, I had X number of data points. I then preprocessed this data by ...
-
-
-I finally randomly shuffled the data set and put Y% of the data into a validation set. 
-
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 1. I used an adam optimizer so that manually training the learning rate wasn't necessary.
