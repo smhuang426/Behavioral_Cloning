@@ -1,5 +1,7 @@
 # **Behavioral Cloning** 
 
+Result Demo
+[![Watch the video](./examples/crop.png)](https://youtu.be/lcO3vkUIxJo)
 ---
 
 **Behavioral Cloning Project**
@@ -125,5 +127,3 @@ After the augment the data set, I had around 9000 of data points. I only flip th
 I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
 I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 1. I used an adam optimizer so that manually training the learning rate wasn't necessary.
-
-[![Watch the video](./examples/crop.png)](./output_video.mp4)
