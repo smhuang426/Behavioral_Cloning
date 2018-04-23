@@ -54,23 +54,23 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
+My model consists of a convolution neural network with 2*2~8*8 filter sizes and depths between 8 and 128 (model.py lines 121-153) 
 
-The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
+The model includes RELU layers to introduce nonlinearity (code line 123), and the data is normalized before the model using Opencv to crop it for removing sky and resize input to 64*64*3 (code line 67). 
 
 #### 2. Attempts to reduce overfitting in the model
 
-The model contains dropout layers in order to reduce overfitting (model.py lines 21). 
+The model contains dropout layers in order to reduce overfitting (model.py lines 131). I add it on fully connection layer. 
 
 The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 10-16). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
 #### 3. Model parameter tuning
 
-The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 25).
+The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 155).
 
 #### 4. Appropriate training data
 
-Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road ... 
+I using the training data provided by Udacity course in project resources section, because I'm not a good racing car game player, so there is a big quetion, I have no enough training data to train my model, I need to augment it.
 
 For details about how I created the training data, see the next section. 
 
@@ -94,11 +94,23 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 #### 2. Final Model Architecture
 
-The final model architecture (model.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes ...
 
-Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
-
-![alt text][image1]
+| Layer         		|     Description	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| Input         		| 64x64x3 RGB image   							| 
+| Convolution 8x8     	| 4x4 stride, SAME padding, outputs 16x16x8 	|
+| RELU					|												|
+| Convolution 8x8	    | 4x4 stride, SAME padding, outputs 4x4x16 |
+| RELU					|												|
+| Convolution 4x4	    | 2x2 stride, SAME padding, outputs 2x2x32 |
+| RELU					|												|
+| Convolution 2x2	    | 1x1 stride, SAME padding, outputs 2x2x64 |
+| RELU					|												|
+| Droupout					|												|
+| Fully connected		| Input = 256. Output = 64 |
+| Droupout					|												|
+| Fully connected		| Input = 64. Output = 32 |
+| Fully connected		| Input = 32. Output = 1 |
 
 #### 3. Creation of the Training Set & Training Process
 
